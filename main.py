@@ -3,9 +3,10 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 import sys
 
-class WidgetGallery(QDialog):
+class MainWindow(QDialog):
+    
     def __init__(self, parent=None):
-        super(WidgetGallery, self).__init__(parent)
+        super(MainWindow, self).__init__(parent)
 
         self.originalPalette = QApplication.palette()
 
@@ -110,10 +111,74 @@ class WidgetGallery(QDialog):
     def createBottomRightGroupBox(self):
         self.bottomRightGroupBox = QGroupBox("Beverages")
 
-    #    label1 = QLabel(self)
-    #    picture1 = QPixmap('Café Espresso.jpg')
-    #    picture1.scaled(50,50, Qt.IgnoreAspectRatio, Qt.FastTransformation)
-    #    label1.setPixmap(picture1)
+        label1 = QLabel(self)
+        label2 = QLabel(self)
+        label3 = QLabel(self)
+        label4 = QLabel(self)
+        label5 = QLabel(self)
+        label6 = QLabel(self)
+        label7 = QLabel(self)
+        label8 = QLabel(self)
+        label9 = QLabel(self)
+
+        picture1 = QPixmap('Assets/beverages/Café Espresso.jpg')
+        picture1.scaled(50,50, Qt.IgnoreAspectRatio, Qt.FastTransformation)
+        picture2 = QPixmap('Assets/beverages/Mocha .jpg')
+        picture2.scaled(50,50, Qt.IgnoreAspectRatio, Qt.FastTransformation)
+        picture3 = QPixmap('Assets/beverages/Kopi susu gula aren.jpg')
+        picture3.scaled(50,50, Qt.IgnoreAspectRatio, Qt.FastTransformation)
+        picture4 = QPixmap('Assets/beverages/Thai tea.jpg')
+        picture4.scaled(50,50, Qt.IgnoreAspectRatio, Qt.FastTransformation)
+        picture5 = QPixmap('Assets/beverages/tea.jpg')
+        picture5.scaled(50,50, Qt.IgnoreAspectRatio, Qt.FastTransformation)
+        picture6 = QPixmap('Assets/beverages/Chocolatte Milk tea.jpg')
+        picture6.scaled(50,50, Qt.IgnoreAspectRatio, Qt.FastTransformation)
+        picture7 = QPixmap('Assets/beverages/Vanilla Latte .jpg')
+        picture7.scaled(50,50, Qt.IgnoreAspectRatio, Qt.FastTransformation)
+        picture8 = QPixmap('Assets/beverages/Taro Latte .jpg')
+        picture8.scaled(50,50, Qt.IgnoreAspectRatio, Qt.FastTransformation)
+        picture9 = QPixmap('Assets/beverages/air mineral.jpg')
+        picture9.scaled(50,50, Qt.IgnoreAspectRatio, Qt.FastTransformation)
+
+        label1.setPixmap(picture1)
+        label2.setPixmap(picture2)
+        label3.setPixmap(picture3)
+        label4.setPixmap(picture4)
+        label5.setPixmap(picture5)
+        label6.setPixmap(picture6)
+        label7.setPixmap(picture7)
+        label8.setPixmap(picture8)
+        label9.setPixmap(picture9)
+
+        textLabel1 = QLabel(self)
+        textLabel2 = QLabel(self)
+        textLabel3 = QLabel(self)
+        textLabel4 = QLabel(self)
+        textLabel5 = QLabel(self)
+        textLabel6 = QLabel(self)
+        textLabel7 = QLabel(self)
+        textLabel8 = QLabel(self)
+        textLabel9 = QLabel(self)
+
+        textLabel1.setText("Café Espresso")
+        textLabel2.setText("Mocha")
+        textLabel3.setText("Kopi susu gula aren")
+        textLabel4.setText("Thai tea")
+        textLabel5.setText("tea")
+        textLabel6.setText("Chocolatte Milk tea")
+        textLabel7.setText("Vanilla Latte")
+        textLabel8.setText("Taro Latte")
+        textLabel9.setText("air mineral")
+
+        textLabel1.setAlignment(Qt.AlignCenter)
+        textLabel2.setAlignment(Qt.AlignCenter)
+        textLabel3.setAlignment(Qt.AlignCenter)
+        textLabel4.setAlignment(Qt.AlignCenter)
+        textLabel5.setAlignment(Qt.AlignCenter)
+        textLabel6.setAlignment(Qt.AlignCenter)
+        textLabel7.setAlignment(Qt.AlignCenter)
+        textLabel8.setAlignment(Qt.AlignCenter)
+        textLabel9.setAlignment(Qt.AlignCenter)
 
         spinBox1 = QSpinBox(self.bottomRightGroupBox)
         spinBox1.setValue(0)
@@ -136,16 +201,35 @@ class WidgetGallery(QDialog):
 
         layout = QGridLayout()
 
-        layout.addWidget(spinBox1, 0, 0)
-   #     layout.addWidget(label1, 0, 0)
-        layout.addWidget(spinBox2, 0, 1)
-        layout.addWidget(spinBox3, 0, 2)
-        layout.addWidget(spinBox4, 1, 0)
-        layout.addWidget(spinBox5, 1, 1)
-        layout.addWidget(spinBox6, 1, 2)
-        layout.addWidget(spinBox7, 2, 0)
-        layout.addWidget(spinBox8, 2, 1)
-        layout.addWidget(spinBox9, 2, 2)
+        layout.addWidget(label1, 0, 0)
+        layout.addWidget(label2, 0, 1)
+        layout.addWidget(label3, 0, 2)
+        layout.addWidget(label4, 3, 0)
+        layout.addWidget(label5, 3, 1)
+        layout.addWidget(label6, 3, 2)
+        layout.addWidget(label7, 6, 0)
+        layout.addWidget(label8, 6, 1)
+        layout.addWidget(label9, 6, 2)
+
+        layout.addWidget(textLabel1, 1, 0)
+        layout.addWidget(textLabel2, 1, 1)
+        layout.addWidget(textLabel3, 1, 2)
+        layout.addWidget(textLabel4, 4, 0)
+        layout.addWidget(textLabel5, 4, 1)
+        layout.addWidget(textLabel6, 4, 2)
+        layout.addWidget(textLabel7, 7, 0)
+        layout.addWidget(textLabel8, 7, 1)
+        layout.addWidget(textLabel9, 7, 2)
+
+        layout.addWidget(spinBox1, 2, 0)
+        layout.addWidget(spinBox2, 2, 1)
+        layout.addWidget(spinBox3, 2, 2)
+        layout.addWidget(spinBox4, 5, 0)
+        layout.addWidget(spinBox5, 5, 1)
+        layout.addWidget(spinBox6, 5, 2)
+        layout.addWidget(spinBox7, 8, 0)
+        layout.addWidget(spinBox8, 8, 1)
+        layout.addWidget(spinBox9, 8, 2)
         self.bottomRightGroupBox.setLayout(layout)
 
 if __name__ == '__main__':
@@ -153,6 +237,6 @@ if __name__ == '__main__':
     import sys
 
     app = QApplication(sys.argv)
-    gallery = WidgetGallery()
+    gallery = MainWindow()
     gallery.show()
     sys.exit(app.exec()) 
