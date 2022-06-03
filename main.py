@@ -31,9 +31,9 @@ class MainWindow(QDialog):
         self.setLayout(mainLayout)
 
         self.setWindowTitle("Cafe Point-Of-Sales")
-        self.changeStyle('Windows')
+        self.changeStyle()
 
-    def changeStyle(self, styleName):
+    def changeStyle(self):
         QApplication.setStyle(QStyleFactory.create('Fusion'))
 
     def createTopLeftGroupBox(self):
