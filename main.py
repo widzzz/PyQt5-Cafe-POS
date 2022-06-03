@@ -2,12 +2,11 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 import sys
-
-class MainWindow(QDialog):
+class MainGrid(QWidget):
     
-    def __init__(self, parent=None):
-        super(MainWindow, self).__init__(parent)
-
+    def __init__(self):
+        super().__init__()
+        
         self.originalPalette = QApplication.palette()
 
         self.createTopLeftGroupBox()
@@ -38,13 +37,28 @@ class MainWindow(QDialog):
 
     def createTopLeftGroupBox(self):
         self.topLeftGroupBox = QGroupBox("Transaksi")
-
-        pushButton1 = QPushButton("Proses")
-
+        
+        pushButton1 = QPushButton()
+        pushButton1.setText("Proses")
+        openInventory = InventoryWindow()
+        pushButton1.clicked.connect(openInventory.show)
+        
         layout = QVBoxLayout()
         layout.addWidget(pushButton1)
         layout.addStretch(1)
-        self.topLeftGroupBox.setLayout(layout)    
+        '''
+        openInvent = InventoryWindow()
+         def on_pushButton_clicked():
+            openInvent.show()  
+        pushButton1.clicked.connect(on_pushButton_clicked)
+       
+        pushButton1.clicked.connect(openInventory)
+        def openInventory():                                             # <===
+            w = InventoryWindow()
+            w.show()
+            w.hide()
+        '''
+        self.topLeftGroupBox.setLayout(layout)
 
     def createTopRightGroupBox(self):
         self.topRightGroupBox = QGroupBox("Foods")
@@ -355,11 +369,27 @@ class MainWindow(QDialog):
         layout.addWidget(priceLabel9, 10, 2)
         self.bottomRightGroupBox.setLayout(layout)
 
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        centralGrid = MainGrid()
+        self.setWindowTitle("Cafe Point-Of-Sales")
+        self.setCentralWidget(centralGrid)
+
+class InventoryWindow(QWidget):
+    def __init__(self):
+        super(InventoryWindow, self).__init__()
+        self.resize(400, 300)
+
+        # Label
+        self.label = QLabel(self)
+        self.label.setGeometry(0, 0, 400, 300)
+        self.label.setText('Sub Window')
+        self.label.setAlignment(Qt.AlignCenter)
+        self.label.setStyleSheet('font-size:40px')
+
 if __name__ == '__main__':
-
-    import sys
-
-    app = QApplication(sys.argv)
-    gallery = MainWindow()
-    gallery.show()
-    sys.exit(app.exec()) 
+     app = QApplication([])
+     window = MainWindow()
+     window.show()
+     sys.exit(app.exec_())
