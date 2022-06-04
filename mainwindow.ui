@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>583</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="horizontalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>621</width>
+      <height>548</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QWidget" name="widget" native="true">
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>520</y>
+          <width>75</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Inventori</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_3">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>520</y>
+          <width>75</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Riwayat</string>
+        </property>
+       </widget>
+       <widget class="QTableWidget" name="tableWidget">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>311</width>
+          <height>281</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(229, 229, 229);</string>
+        </property>
+        <row>
+         <property name="text">
+          <string/>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string/>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string/>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string/>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string/>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string/>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string/>
+         </property>
+        </row>
+        <column>
+         <property name="text">
+          <string>Menu</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Qty</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Jumlah</string>
+         </property>
+        </column>
+       </widget>
+       <widget class="QPushButton" name="pushButton">
+        <property name="geometry">
+         <rect>
+          <x>180</x>
+          <y>440</y>
+          <width>75</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Proses</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>340</y>
+          <width>31</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Note:</string>
+        </property>
+       </widget>
+       <widget class="QPlainTextEdit" name="plainTextEdit">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>340</y>
+          <width>171</width>
+          <height>71</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="totalText">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>300</y>
+          <width>47</width>
+          <height>13</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Total    :</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="totalPrice">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>300</y>
+          <width>201</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </widget>
+     </item>
+     <item>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="4" column="0">
+        <widget class="QSpinBox" name="spinBox"/>
+       </item>
+       <item row="3" column="2">
+        <widget class="QLabel" name="label_text3">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Boba Milk Tea&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;19.000&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item row="13" column="1">
+        <widget class="QLabel" name="label_pict11">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>Assets/foods/onion rings.jpg</pixmap>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="14" column="2">
+        <widget class="QLabel" name="label_text12">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Chicken Teriyaki&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;20.000&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QLabel" name="label_text5">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Thai Tea&lt;/p&gt;&lt;p&gt;17.000&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="2">
+        <widget class="QSpinBox" name="spinBox_9"/>
+       </item>
+       <item row="15" column="0">
+        <widget class="QSpinBox" name="spinBox_10"/>
+       </item>
+       <item row="11" column="1">
+        <widget class="QSpinBox" name="spinBox_8"/>
+       </item>
+       <item row="9" column="1">
+        <widget class="QLabel" name="label_text8">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;French Fries&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;12.000&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="2">
+        <widget class="QLabel" name="label_text9">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Chicken Nugget&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;14.000&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLabel" name="label_text2">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Espresso&lt;/p&gt;&lt;p&gt;20.000&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="13" column="2">
+        <widget class="QLabel" name="label_pict12">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>Assets/foods/Chicken Teriyaki Rice Bowl.jpeg</pixmap>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="2">
+        <widget class="QSpinBox" name="spinBox_6"/>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLabel" name="label_pic5">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>Assets/beverages/Thai tea.jpg</pixmap>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="14" column="0">
+        <widget class="QLabel" name="label_text10">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Sosis Goreng&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;13.000&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="2">
+        <widget class="QLabel" name="label_text6">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Mocha&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;20.000&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item row="13" column="0">
+        <widget class="QLabel" name="label_pict10">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>Assets/foods/Sosis Goreng.jpeg</pixmap>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="0">
+        <widget class="QSpinBox" name="spinBox_7"/>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLabel" name="label_pict2">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>Assets/beverages/Café Espresso.jpg</pixmap>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="15" column="2">
+        <widget class="QSpinBox" name="spinBox_12"/>
+       </item>
+       <item row="7" column="0">
+        <widget class="QSpinBox" name="spinBox_4"/>
+       </item>
+       <item row="4" column="1">
+        <widget class="QSpinBox" name="spinBox_2"/>
+       </item>
+       <item row="14" column="1">
+        <widget class="QLabel" name="label_text11">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Onion Rings&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;15.000&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="2">
+        <widget class="QLabel" name="label_pict6">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>Assets/beverages/Mocha .jpg</pixmap>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="QSpinBox" name="spinBox_5"/>
+       </item>
+       <item row="4" column="2">
+        <widget class="QSpinBox" name="spinBox_3"/>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_pict1">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>Assets/beverages/air mineral.jpg</pixmap>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="15" column="1">
+        <widget class="QSpinBox" name="spinBox_11"/>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_pict4">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>Assets/beverages/tea.jpg</pixmap>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="label_text4">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ice Tea&lt;/p&gt;&lt;p&gt;15.000&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="1">
+        <widget class="QLabel" name="label_pict8">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>Assets/foods/French Fries.jpeg</pixmap>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0">
+        <widget class="QLabel" name="label_pict7">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>Assets/foods/Beef Rice Bowl.jpeg</pixmap>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="0">
+        <widget class="QLabel" name="label_text7">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Rice Bowl&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;23.000&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_text1">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Air Mineral&lt;/p&gt;&lt;p&gt;8.000&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QLabel" name="label_pict3">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>Assets/beverages/Chocolatte Milk tea.jpg</pixmap>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="2">
+        <widget class="QLabel" name="label_pict9">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>Assets/foods/Chicken Nuget.jpeg</pixmap>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
