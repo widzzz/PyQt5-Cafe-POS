@@ -21,6 +21,29 @@ from inventoryWindow import Ui_inventory
 import sqlite3
 import sys
 
+connection = sqlite3.connect("projects.db")
+cursor = connection.cursor()
+
+if not exists("projects.db"):
+    cursor.execute("""
+        CREATE TABLE inventory(stock INTEGER)
+        """)
+    cursor.execute("""INSERT INTO inventory VALUES 
+        (0),
+        (0),
+        (0),
+        (0),
+        (0),
+        (0),
+        (0),
+        (0),
+        (0),
+        (0),
+        (0),
+        (0);
+        """)
+    connection.commit()
+
 class Ui_MainWindow(object):
     
     def setupUi(self, MainWindow):
@@ -316,45 +339,60 @@ class Ui_MainWindow(object):
         self.label_pict9.setAlignment(Qt.AlignCenter)
 
         ##
-        self.spinBox.valueChanged.connect(cursor.execute("""
-            SELECT stock
-            FROM inventory
-            WHERE label = 'spinBox';
-        """))
-        self.spinBox_2.valueChanged.connect(cursor.execute("""
-            SELECT stock FROM inventory WHERE label = 'spinBox_2';
-        """))
-        self.spinBox_3.valueChanged.connect(cursor.execute("""
-            SELECT stock FROM inventory WHERE label = 'spinBox_3';
-        """))
-        self.spinBox_4.valueChanged.connect(cursor.execute("""
-            SELECT stock FROM inventory WHERE label = 'spinBox_4';
-        """))
-        self.spinBox_5.valueChanged.connect(cursor.execute("""
-            SELECT stock FROM inventory WHERE label = 'spinBox_5';
-        """))
-        self.spinBox_6.valueChanged.connect(cursor.execute("""
-            SELECT stock FROM inventory WHERE label = 'spinBox_6';
-        """))
-        self.spinBox_7.valueChanged.connect(cursor.execute("""
-            SELECT stock FROM inventory WHERE label = 'spinBox_7';
-        """))
-        self.spinBox_8.valueChanged.connect(cursor.execute("""
-            SELECT stock FROM inventory WHERE label = 'spinBox_8';
-        """))
-        self.spinBox_9.valueChanged.connect(cursor.execute("""
-            SELECT stock FROM inventory WHERE label = 'spinBox_9';
-        """))
-        self.spinBox_10.valueChanged.connect(cursor.execute("""
-            SELECT stock FROM inventory WHERE label = 'spinBox_10';
-        """))
-        self.spinBox_11.valueChanged.connect(cursor.execute("""
-            SELECT stock FROM inventory WHERE label = 'spinBox_11';
-        """))
-        self.spinBox_12.valueChanged.connect(cursor.execute("""
-            SELECT stock FROM inventory WHERE label = 'spinBox_12';
-        """))
+        sqlite_select_query_stock = """SELECT * FROM inventory"""
+        cursor.execute(sqlite_select_query_stock)
+
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox = int(t)
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox2 = int(t)
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox3 = int(t)
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox4 = int(t)
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox5 = int(t)
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox6 = int(t)
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox7 = int(t)
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox8 = int(t)
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox9 = int(t)
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox10 = int(t)
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox11 = int(t)
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox12 = int(t)
+
+        self.spinBox.setMaximum(self.value_spinBox)
+        self.spinBox_2.setMaximum(self.value_spinBox2)
+        self.spinBox_3.setMaximum(self.value_spinBox3)
+        self.spinBox_4.setMaximum(self.value_spinBox4)
+        self.spinBox_5.setMaximum(self.value_spinBox5)
+        self.spinBox_6.setMaximum(self.value_spinBox6)
+        self.spinBox_7.setMaximum(self.value_spinBox7)
+        self.spinBox_8.setMaximum(self.value_spinBox8)
+        self.spinBox_9.setMaximum(self.value_spinBox9)
+        self.spinBox_10.setMaximum(self.value_spinBox10)
+        self.spinBox_11.setMaximum(self.value_spinBox11)
+        self.spinBox_12.setMaximum(self.value_spinBox12)
         ##
+
         self.gridLayout_2.addWidget(self.label_pict9, 8, 2, 1, 1)
 
 
@@ -480,30 +518,6 @@ class LoginWindow(QWidget):
 
     def changeStyle(self):
         QApplication.setStyle(QStyleFactory.create('Fusion'))
-
-
-connection = sqlite3.connect("projects.db")
-cursor = connection.cursor()
-
-if not exists("projects.db"):
-    cursor.execute("""
-        CREATE TABLE inventory(label TEXT, stock INTEGER)
-        """)
-    cursor.execute("""INSERT INTO projects VALUES 
-        ('spinBox', 0),
-        ('spinBox_2', 0),
-        ('spinBox_3', 0),
-        ('spinBox_4', 0),
-        ('spinBox_5', 0),
-        ('spinBox_6', 0),
-        ('spinBox_7', 0),
-        ('spinBox_8', 0),
-        ('spinBox_9', 0),
-        ('spinBox_10', 0),
-        ('spinBox_11', 0),
-        ('spinBox_12', 0),
-        """)
-    connection.commit()
 
 
 if __name__ == '__main__':
