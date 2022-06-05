@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
-##
-##  THIS FILE HAS BEEN EDITED BY HUMAN
-##
+
 ################################################################################
-## Form generated from reading UI file 'mainwindowYjxaBh.ui'
+## Form generated from reading UI file 'mainwindowpRGRit.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -21,31 +19,35 @@ from inventoryWindow import Ui_inventory
 import sqlite3
 import sys
 
-connection = sqlite3.connect("projects.db")
-cursor = connection.cursor()
-
 if not exists("projects.db"):
+    connection = sqlite3.connect("projects.db")
+    cursor = connection.cursor()
     cursor.execute("""
-        CREATE TABLE inventory(stock INTEGER)
+        CREATE TABLE inventory(
+        name INT,
+        stock INT);
         """)
-    cursor.execute("""INSERT INTO inventory VALUES 
-        (0),
-        (0),
-        (0),
-        (0),
-        (0),
-        (0),
-        (0),
-        (0),
-        (0),
-        (0),
-        (0),
-        (0);
+    cursor.execute("""INSERT INTO inventory (name, stock) VALUES 
+        (1,0),
+        (2,0),
+        (3,0),
+        (4,0),
+        (5,0),
+        (6,0),
+        (7,0),
+        (8,0),
+        (9,0),
+        (10,0),
+        (11,0),
+        (12,0);
         """)
     connection.commit()
+else:
+    connection = sqlite3.connect("projects.db")
+    cursor = connection.cursor()
+
 
 class Ui_MainWindow(object):
-    
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
@@ -63,61 +65,37 @@ class Ui_MainWindow(object):
         self.pushButton_2 = QPushButton(self.widget)
         self.pushButton_2.setObjectName(u"pushButton_2")
         self.pushButton_2.setGeometry(QRect(0, 520, 75, 23))
-
-        ##
-        self.pushButton_2.clicked.connect(self.openInventory)
-        ##
-
         self.pushButton_3 = QPushButton(self.widget)
         self.pushButton_3.setObjectName(u"pushButton_3")
         self.pushButton_3.setGeometry(QRect(80, 520, 75, 23))
-
-        ##
-        self.pushButton_3.clicked.connect(self.openHistory)
-        ##
-
-        self.tableWidget = QTableWidget(self.widget)
-        if (self.tableWidget.columnCount() < 3):
-            self.tableWidget.setColumnCount(3)
-        __qtablewidgetitem = QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem)
-        __qtablewidgetitem1 = QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(1, __qtablewidgetitem1)
-        __qtablewidgetitem2 = QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(2, __qtablewidgetitem2)
-        if (self.tableWidget.rowCount() < 7):
-            self.tableWidget.setRowCount(7)
-        __qtablewidgetitem3 = QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(0, __qtablewidgetitem3)
-        __qtablewidgetitem4 = QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(1, __qtablewidgetitem4)
-        __qtablewidgetitem5 = QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(2, __qtablewidgetitem5)
-        __qtablewidgetitem6 = QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(3, __qtablewidgetitem6)
-        __qtablewidgetitem7 = QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(4, __qtablewidgetitem7)
-        __qtablewidgetitem8 = QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(5, __qtablewidgetitem8)
-        __qtablewidgetitem9 = QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(6, __qtablewidgetitem9)
-        self.tableWidget.setObjectName(u"tableWidget")
-        self.tableWidget.setGeometry(QRect(0, 0, 311, 281))
-        self.tableWidget.setStyleSheet(u"background-color: rgb(229, 229, 229);")
         self.pushButton = QPushButton(self.widget)
         self.pushButton.setObjectName(u"pushButton")
         self.pushButton.setGeometry(QRect(180, 440, 75, 23))
-        
-        ##
-        self.pushButton.clicked.connect(self.openTransaction)
-        ##
-
         self.label = QLabel(self.widget)
         self.label.setObjectName(u"label")
         self.label.setGeometry(QRect(40, 340, 31, 16))
         self.plainTextEdit = QPlainTextEdit(self.widget)
         self.plainTextEdit.setObjectName(u"plainTextEdit")
         self.plainTextEdit.setGeometry(QRect(80, 340, 171, 71))
+        self.totalText = QLabel(self.widget)
+        self.totalText.setObjectName(u"totalText")
+        self.totalText.setGeometry(QRect(40, 190, 47, 13))
+        self.totalPrice = QLabel(self.widget)
+        self.totalPrice.setObjectName(u"totalPrice")
+        self.totalPrice.setGeometry(QRect(80, 300, 201, 16))
+        self.total = QLabel(self.widget)
+        self.total.setObjectName(u"total")
+        self.total.setGeometry(QRect(40, 230, 231, 61))
+        font = QFont()
+        font.setPointSize(26)
+        font.setBold(True)
+        font.setWeight(75)
+        self.total.setFont(font)
+        self.total.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.logo = QLabel(self.widget)
+        self.logo.setObjectName(u"logo")
+        self.logo.setGeometry(QRect(90, 40, 121, 111))
+        self.logo.setPixmap(QPixmap(u"logoProton125px.png"))
 
         self.horizontalLayout.addWidget(self.widget)
 
@@ -338,10 +316,26 @@ class Ui_MainWindow(object):
         self.label_pict9.setPixmap(QPixmap(u"Assets/foods/Chicken Nuget.jpeg"))
         self.label_pict9.setAlignment(Qt.AlignCenter)
 
+        self.gridLayout_2.addWidget(self.label_pict9, 8, 2, 1, 1)
+
         ##
-        sqlite_select_query_stock = """SELECT * FROM inventory"""
+        self.pushButton_2.clicked.connect(self.openInventory)
+        ##
+        
+        ##
+        self.pushButton_3.clicked.connect(self.openHistory)
+        ##
+
+        ##
+        self.pushButton.clicked.connect(self.openTransaction)
+        ##
+
+
+        ##
+        sqlite_select_query_stock = """SELECT stock FROM inventory"""
         cursor.execute(sqlite_select_query_stock)
 
+        ## F*CK LOOPING
         t = cursor.fetchone()
         t = sum(t)
         self.value_spinBox = int(t)
@@ -391,10 +385,8 @@ class Ui_MainWindow(object):
         self.spinBox_10.setMaximum(self.value_spinBox10)
         self.spinBox_11.setMaximum(self.value_spinBox11)
         self.spinBox_12.setMaximum(self.value_spinBox12)
+
         ##
-
-        self.gridLayout_2.addWidget(self.label_pict9, 8, 2, 1, 1)
-
 
         self.horizontalLayout.addLayout(self.gridLayout_2)
 
@@ -406,20 +398,36 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         QMetaObject.connectSlotsByName(MainWindow)
+        self.spinBox.valueChanged.connect(self.show_total)
+        self.spinBox_2.valueChanged.connect(self.show_total)
+        self.spinBox_3.valueChanged.connect(self.show_total)
+        self.spinBox_4.valueChanged.connect(self.show_total)
+        self.spinBox_5.valueChanged.connect(self.show_total)
+        self.spinBox_6.valueChanged.connect(self.show_total)
+        self.spinBox_7.valueChanged.connect(self.show_total)
+        self.spinBox_8.valueChanged.connect(self.show_total)
+        self.spinBox_9.valueChanged.connect(self.show_total)
+        self.spinBox_10.valueChanged.connect(self.show_total)
+        self.spinBox_11.valueChanged.connect(self.show_total)
+        self.spinBox_12.valueChanged.connect(self.show_total)
     # setupUi
+
+    def show_total(self):
+
+        value = (self.spinBox.value()*8000) + (self.spinBox_2.value()*20000) + (self.spinBox_3.value()*19000) + (self.spinBox_4.value()*15000) + (self.spinBox_5.value()*17000) + (self.spinBox_6.value()*20000) + (self.spinBox_7.value()*23000) + (self.spinBox_8.value()*12000) + (self.spinBox_9.value()*14000) + (self.spinBox_10.value()*13000) + (self.spinBox_11.value()*15000) + (self.spinBox_12.value()*20000)
+  
+        # setting value of spin box to the label
+        self.total.setText(str(value))
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"Inventori", None))
         self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"Riwayat", None))
-        ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"Menu", None));
-        ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"Qty", None));
-        ___qtablewidgetitem2 = self.tableWidget.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Jumlah", None));
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Proses", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Note:", None))
+        self.totalText.setText(QCoreApplication.translate("MainWindow", u"Total    :", None))
+        self.totalPrice.setText("")
+        self.logo.setText("")
         self.label_text3.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">Boba Milk Tea</p><p align=\"center\">19.000</p></body></html>", None))
         self.label_pict11.setText("")
         self.label_text12.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">Chicken Teriyaki</p><p align=\"center\">20.000</p></body></html>", None))
@@ -445,7 +453,7 @@ class Ui_MainWindow(object):
         self.label_pict3.setText("")
         self.label_pict9.setText("")
     # retranslateUi
-
+    
     def openHistory(self):
         self.w = HistoryWindow()
         self.w.show()
@@ -457,7 +465,6 @@ class Ui_MainWindow(object):
     def openTransaction(self):
         self.w = TransactionWindow()
         self.w.show()
-    
 
 class MainWindow(QMainWindow):
     def __init__(self, parent=None):
@@ -522,6 +529,6 @@ class LoginWindow(QWidget):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    window = MainWindow()
+    window = InventoryWindow()
     window.show()
     app.exec()
