@@ -74,9 +74,6 @@ class Ui_MainWindow(object):
         self.label = QLabel(self.widget)
         self.label.setObjectName(u"label")
         self.label.setGeometry(QRect(40, 340, 31, 16))
-        self.plainTextEdit = QPlainTextEdit(self.widget)
-        self.plainTextEdit.setObjectName(u"plainTextEdit")
-        self.plainTextEdit.setGeometry(QRect(80, 340, 171, 71))
         self.totalText = QLabel(self.widget)
         self.totalText.setObjectName(u"totalText")
         self.totalText.setGeometry(QRect(40, 190, 47, 13))
@@ -424,7 +421,6 @@ class Ui_MainWindow(object):
         self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"Inventori", None))
         self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"Riwayat", None))
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Proses", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", u"Note:", None))
         self.totalText.setText(QCoreApplication.translate("MainWindow", u"Total    :", None))
         self.totalPrice.setText("")
         self.logo.setText("")
@@ -529,6 +525,6 @@ class LoginWindow(QWidget):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    window = InventoryWindow()
+    window = MainWindow()
     window.show()
     app.exec()

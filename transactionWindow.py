@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'TransactionWzJfJb.ui'
+## Form generated from reading UI file 'TransactionakNkbg.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -11,7 +11,11 @@
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
-import datetime
+import sqlite3
+import sys
+
+connection = sqlite3.connect("projects.db")
+cursor = connection.cursor()
 
 class Ui_transaction(object):
     def setupUi(self, Dialog):
@@ -20,51 +24,84 @@ class Ui_transaction(object):
         Dialog.resize(640, 480)
         self.label_1 = QLabel(Dialog)
         self.label_1.setObjectName(u"label_1")
-        self.label_1.setGeometry(QRect(230, 70, 171, 31))
+        self.label_1.setGeometry(QRect(250, 70, 171, 31))
         self.label_1.setStyleSheet(u"FONT-SIZE:20PT;;\n"
 "")
-        self.pushButton_1 = QPushButton(Dialog)
-        self.pushButton_1.setObjectName(u"pushButton_1")
-        self.pushButton_1.setGeometry(QRect(10, 450, 75, 23))
-        self.pushButton_2 = QPushButton(Dialog)
-        self.pushButton_2.setObjectName(u"pushButton_2")
-        self.pushButton_2.setGeometry(QRect(418, 240, 161, 23))
         self.label_3 = QLabel(Dialog)
         self.label_3.setObjectName(u"label_3")
-        self.label_3.setGeometry(QRect(68, 240, 171, 16))
-        self.lineEdit_1 = QLineEdit(Dialog)
-        self.lineEdit_1.setObjectName(u"lineEdit_1")
-        self.lineEdit_1.setGeometry(QRect(230, 240, 181, 20))
+        self.label_3.setGeometry(QRect(68, 240, 161, 16))
+        self.paymentLineEdit = QLineEdit(Dialog)
+        self.paymentLineEdit.setObjectName(u"paymentLineEdit")
+        self.paymentLineEdit.setGeometry(QRect(230, 240, 281, 20))
+        self.paymentLineEdit.setText("0")
+        self.paymentLineEdit.textChanged.connect(self.show_change)
         self.comboBox_1 = QComboBox(Dialog)
         self.comboBox_1.addItem("")
         self.comboBox_1.addItem("")
         self.comboBox_1.setObjectName(u"comboBox_1")
-        self.comboBox_1.setGeometry(QRect(70, 160, 69, 22))
+        self.comboBox_1.setGeometry(QRect(70, 160, 91, 22))
         self.label_2 = QLabel(Dialog)
         self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(68, 270, 171, 16))
-        self.lineEdit_2 = QLineEdit(Dialog)
-        self.lineEdit_2.setObjectName(u"lineEdit_2")
-        self.lineEdit_2.setGeometry(QRect(230, 270, 181, 20))
-        self.pushButton_3 = QPushButton(Dialog)
-        self.pushButton_3.setObjectName(u"pushButton_3")
-        self.pushButton_3.setGeometry(QRect(560, 450, 75, 23))
+        self.label_2.setGeometry(QRect(70, 310, 171, 16))
+        self.changeValue = QLabel(Dialog)
+        self.changeValue.setObjectName(u"changeValue")
+        self.changeValue.setGeometry(QRect(230, 310, 281, 51))
+        font = QFont()
+        font.setPointSize(18)
+        font.setBold(True)
+        font.setWeight(75)
+        self.changeValue.setFont(font)
+        self.changeValue.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.changeValue.setWordWrap(True)
+        self.pushButton = QPushButton(Dialog)
+        self.pushButton.setObjectName(u"pushButton")
+        self.pushButton.setGeometry(QRect(260, 400, 131, 51))
+        font1 = QFont()
+        font1.setPointSize(14)
+        self.pushButton.setFont(font1)
+        self.totalLineEdit = QLineEdit(Dialog)
+        self.totalLineEdit.setObjectName(u"totalLineEdit")
+        self.totalLineEdit.setGeometry(QRect(230, 210, 281, 20))
+        self.totalLineEdit.setText("0")
+        self.totalLineEdit.textChanged.connect(self.show_change)
+        self.label_4 = QLabel(Dialog)
+        self.label_4.setObjectName(u"label_4")
+        self.label_4.setGeometry(QRect(70, 210, 161, 16))
 
         self.retranslateUi(Dialog)
 
         QMetaObject.connectSlotsByName(Dialog)
     # setupUi
 
+    def show_change(self):
+
+        value = int(self.paymentLineEdit.text()) - int(self.totalLineEdit.text())
+  
+        # setting value of spin box to the label
+        self.changeValue.setText(str(value))
+
+    def onClicked_pushButton(self):
+        total = self.totalLineEdit.text()
+        method = self.comboBox_1.currentText()
+        datetime = datetime.now()
+
+        cursor.execute("""INSERT INTO SET stock = ? WHERE name=4""", (str(value)))
+        cursor.execute("""UPDATE history SET stock = ? WHERE name=4""", (str(value)))
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=4""", (str(value)))
+
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
         self.label_1.setText(QCoreApplication.translate("Dialog", u"PEMBAYARAN", None))
-        self.pushButton_1.setText(QCoreApplication.translate("Dialog", u"KEMBALI", None))
-        self.pushButton_2.setText(QCoreApplication.translate("Dialog", u"HITUNG JUMLAH KEMBALIAN", None))
         self.label_3.setText(QCoreApplication.translate("Dialog", u"JUMLAH UANG YANG DIBAYAR :", None))
         self.comboBox_1.setItemText(0, QCoreApplication.translate("Dialog", u"E-Wallet", None))
         self.comboBox_1.setItemText(1, QCoreApplication.translate("Dialog", u"Cash", None))
 
         self.label_2.setText(QCoreApplication.translate("Dialog", u"JUMLAH UANG KEMBALIAN       :", None))
-        self.pushButton_3.setText(QCoreApplication.translate("Dialog", u"SELESAI", None))
+        self.changeValue.setText("")
+        self.pushButton.setText(QCoreApplication.translate("Dialog", u"Selesai", None))
+        self.label_4.setText(QCoreApplication.translate("Dialog", u"Total :", None))
     # retranslateUi
 
+class Exit(QWidget):
+    app = QApplication(sys.argv)
+    app.quit()

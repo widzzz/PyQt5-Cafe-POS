@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'inventoryRFuTzQ.ui'
+## Form generated from reading UI file 'inventoryzYawRs.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -11,7 +11,10 @@
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
+import sqlite3
 
+connection = sqlite3.connect("projects.db")
+cursor = connection.cursor()
 
 class Ui_inventory(object):
     def setupUi(self, Form):
@@ -246,15 +249,127 @@ class Ui_inventory(object):
         self.label.setGeometry(QRect(20, 230, 131, 51))
         self.label_2 = QLabel(Form)
         self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(20, 260, 131, 51))
+        self.label_2.setGeometry(QRect(20, 270, 111, 91))
+        self.label_2.setTextFormat(Qt.AutoText)
+        self.label_2.setWordWrap(True)
         self.pushButton = QPushButton(Form)
         self.pushButton.setObjectName(u"pushButton")
         self.pushButton.setGeometry(QRect(30, 400, 131, 23))
+
+        ##
+        sqlite_select_query_stock = """SELECT stock FROM inventory"""
+        cursor.execute(sqlite_select_query_stock)
+
+        ## F*CK LOOPING
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox = int(t)
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox2 = int(t)
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox3 = int(t)
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox4 = int(t)
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox5 = int(t)
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox6 = int(t)
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox7 = int(t)
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox8 = int(t)
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox9 = int(t)
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox10 = int(t)
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox11 = int(t)
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox12 = int(t)
+
+        self.spinBox.setValue(self.value_spinBox)
+        self.spinBox_2.setValue(self.value_spinBox2)
+        self.spinBox_3.setValue(self.value_spinBox3)
+        self.spinBox_4.setValue(self.value_spinBox4)
+        self.spinBox_5.setValue(self.value_spinBox5)
+        self.spinBox_6.setValue(self.value_spinBox6)
+        self.spinBox_7.setValue(self.value_spinBox7)
+        self.spinBox_8.setValue(self.value_spinBox8)
+        self.spinBox_9.setValue(self.value_spinBox9)
+        self.spinBox_10.setValue(self.value_spinBox10)
+        self.spinBox_11.setValue(self.value_spinBox11)
+        self.spinBox_12.setValue(self.value_spinBox12)
+        
+        self.spinBox.valueChanged.connect(self.updateQueryspin1)
+        self.spinBox_2.valueChanged.connect(self.updateQueryspin2)
+        self.spinBox_3.valueChanged.connect(self.updateQueryspin3)
+        self.spinBox_4.valueChanged.connect(self.updateQueryspin4)
+        self.spinBox_5.valueChanged.connect(self.updateQueryspin5)
+        self.spinBox_6.valueChanged.connect(self.updateQueryspin6)
+        self.spinBox_7.valueChanged.connect(self.updateQueryspin7)
+        self.spinBox_8.valueChanged.connect(self.updateQueryspin8)
+        self.spinBox_9.valueChanged.connect(self.updateQueryspin9)
+        self.spinBox_10.valueChanged.connect(self.updateQueryspin10)
+        self.spinBox_11.valueChanged.connect(self.updateQueryspin11)
+        self.spinBox_12.valueChanged.connect(self.updateQueryspin12)
+
+        self.connection = sqlite3.connect("projects.db")
+        self.cursor = self.connection.cursor()
+        
+        ##
 
         self.retranslateUi(Form)
 
         QMetaObject.connectSlotsByName(Form)
     # setupUi
+
+    def updateQueryspin1(self, value):
+        self.cursor.execute("""UPDATE inventory SET stock = ? WHERE name=1""", (str(value)))
+    
+    def updateQueryspin2(self, value):
+        self.cursor.execute("""UPDATE inventory SET stock = ? WHERE name=2""", [str(value)])
+    
+    def updateQueryspin3(self, value):
+        self.cursor.execute("""UPDATE inventory SET stock = ? WHERE name=3""", [str(value)])
+    
+    def updateQueryspin4(self, value):
+        self.cursor.execute("""UPDATE inventory SET stock = ? WHERE name=4""", (str(value)))
+
+    def updateQueryspin5(self, value):
+        self.cursor.execute("""UPDATE inventory SET stock = ? WHERE name=5""", (str(value)))
+    
+    def updateQueryspin6(self, value):
+        self.cursor.execute("""UPDATE inventory SET stock = ? WHERE name=6""", (str(value)))
+
+    def updateQueryspin7(self, value):
+        self.cursor.execute("""UPDATE inventory SET stock = ? WHERE name=7""", (str(value)))
+
+    def updateQueryspin8(self, value):
+        self.cursor.execute("""UPDATE inventory SET stock = ? WHERE name=8""", (str(value)))
+
+    def updateQueryspin9(self, value):
+        self.cursor.execute("""UPDATE inventory SET stock = ? WHERE name=9""", (str(value)))
+    
+    def updateQueryspin10(self, value):
+        self.cursor.execute("""UPDATE inventory SET stock = ? WHERE name=10""", (str(value)))
+    
+    def updateQueryspin11(self, value):
+        self.cursor.execute("""UPDATE inventory SET stock = ? WHERE name=11""", (str(value)))
+    
+    def updateQueryspin12(self, value):
+        self.cursor.execute("""UPDATE inventory SET stock = ? WHERE name=12""", (str(value)))
+  
 
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
@@ -283,7 +398,7 @@ class Ui_inventory(object):
         self.label_text1.setText(QCoreApplication.translate("Form", u"<html><head/><body><p>Air Mineral</p><p>8.000</p></body></html>", None))
         self.label_pict1.setText("")
         self.label.setText(QCoreApplication.translate("Form", u"<html><head/><body><p><span style=\" font-size:18pt; font-weight:600;\">Inventori</span></p></body></html>", None))
-        self.label_2.setText(QCoreApplication.translate("Form", u"<html><head/><body><p>Edit stok barang anda</p></body></html>", None))
-        self.pushButton.setText(QCoreApplication.translate("Form", u"Simpan && Kembali", None))
+        self.label_2.setText(QCoreApplication.translate("Form", u"<html><head/><body><p>Anda diharuskan<span style=\" font-weight:600;\"> keluar</span> dari aplikasi untuk menyimpan stok barang</p></body></html>", None))
+        self.pushButton.setText(QCoreApplication.translate("Form", u"Simpan && Keluar", None))
     # retranslateUi
 
