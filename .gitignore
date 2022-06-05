@@ -160,3 +160,6 @@ cython_debug/
 
 #Qt for Python
 .qt_for_python/
+
+#Database
+*.db
