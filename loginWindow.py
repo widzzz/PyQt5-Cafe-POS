@@ -11,7 +11,8 @@
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
-
+import sys
+import os
 
 class Ui_login(object):
     def setupUi(self, Form):
@@ -38,12 +39,24 @@ class Ui_login(object):
         self.lineEdit_2.setObjectName(u"lineEdit_2")
         self.lineEdit_2.setGeometry(QRect(220, 180, 241, 25))
         self.lineEdit_2.setStyleSheet(u"font-size:15pt;;")
+
+        ##
+        self.lineEdit_2.setEchoMode(QLineEdit.Password)
+
+        self.usernameValue = self.lineEdit_1.text()
+        self.passwordValue = self.lineEdit_2.text()
+
+        
+        ##
+
         self.pushButton_1 = QPushButton(Form)
         self.pushButton_1.setObjectName(u"pushButton_1")
         self.pushButton_1.setGeometry(QRect(370, 220, 91, 31))
         self.pushButton_1.setStyleSheet(u"background-color: rgb(12, 255, 40);")
 
         self.retranslateUi(Form)
+
+        self.pushButton_1.clicked.connect(self.password_checker)
 
         QMetaObject.connectSlotsByName(Form)
     # setupUi
@@ -55,3 +68,33 @@ class Ui_login(object):
         self.label_3.setText(QCoreApplication.translate("Form", u"PASSWORD:", None))
         self.pushButton_1.setText(QCoreApplication.translate("Form", u"LOGIN", None))
     # retranslateUi
+
+    def password_checker(self):
+        message = QMessageBox()
+ 
+        if self.lineEdit_1.text() == "user" and self.lineEdit_2.text() == "user":
+            message.setText("Berhasil Login")
+            message.exec()
+            os.system("python mainWindow.py")
+ 
+        else:
+            message.setText("Password anda salah")
+            message.exec_()
+
+class LoginWindow(QWidget):
+    def __init__(self, parent=None):
+        QWidget.__init__(self)
+        self.ui = Ui_login()
+        self.ui.setupUi(self)
+
+        self.changeStyle()
+        self.show()
+
+    def changeStyle(self):
+        QApplication.setStyle(QStyleFactory.create('Fusion'))
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    window = LoginWindow()
+    window.show()
+    app.exec()
