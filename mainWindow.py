@@ -18,6 +18,7 @@ from historyWindow import Ui_history
 from transactionWindow import Ui_transaction
 from inventoryWindow import Ui_inventory
 import sys
+import datetime
 
 class Ui_MainWindow(object):
     
@@ -419,6 +420,18 @@ class TransactionWindow(QWidget):
     def __init__(self, parent=None):
         QWidget.__init__(self)
         self.ui = Ui_transaction()
+        self.ui.setupUi(self)
+
+        self.changeStyle()
+        self.show()
+
+    def changeStyle(self):
+        QApplication.setStyle(QStyleFactory.create('Fusion'))
+
+class LoginWindow(QWidget):
+    def __init__(self, parent=None):
+        QWidget.__init__(self)
+        self.ui = Ui_login()
         self.ui.setupUi(self)
 
         self.changeStyle()
