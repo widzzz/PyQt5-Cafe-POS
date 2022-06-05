@@ -10,6 +10,7 @@
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
+from genericpath import exists
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
@@ -17,8 +18,8 @@ from loginWindow import Ui_login
 from historyWindow import Ui_history
 from transactionWindow import Ui_transaction
 from inventoryWindow import Ui_inventory
+import sqlite3
 import sys
-import datetime
 
 class Ui_MainWindow(object):
     
@@ -314,6 +315,46 @@ class Ui_MainWindow(object):
         self.label_pict9.setPixmap(QPixmap(u"Assets/foods/Chicken Nuget.jpeg"))
         self.label_pict9.setAlignment(Qt.AlignCenter)
 
+        ##
+        self.spinBox.valueChanged.connect(cursor.execute("""
+            SELECT stock
+            FROM inventory
+            WHERE label = 'spinBox';
+        """))
+        self.spinBox_2.valueChanged.connect(cursor.execute("""
+            SELECT stock FROM inventory WHERE label = 'spinBox_2';
+        """))
+        self.spinBox_3.valueChanged.connect(cursor.execute("""
+            SELECT stock FROM inventory WHERE label = 'spinBox_3';
+        """))
+        self.spinBox_4.valueChanged.connect(cursor.execute("""
+            SELECT stock FROM inventory WHERE label = 'spinBox_4';
+        """))
+        self.spinBox_5.valueChanged.connect(cursor.execute("""
+            SELECT stock FROM inventory WHERE label = 'spinBox_5';
+        """))
+        self.spinBox_6.valueChanged.connect(cursor.execute("""
+            SELECT stock FROM inventory WHERE label = 'spinBox_6';
+        """))
+        self.spinBox_7.valueChanged.connect(cursor.execute("""
+            SELECT stock FROM inventory WHERE label = 'spinBox_7';
+        """))
+        self.spinBox_8.valueChanged.connect(cursor.execute("""
+            SELECT stock FROM inventory WHERE label = 'spinBox_8';
+        """))
+        self.spinBox_9.valueChanged.connect(cursor.execute("""
+            SELECT stock FROM inventory WHERE label = 'spinBox_9';
+        """))
+        self.spinBox_10.valueChanged.connect(cursor.execute("""
+            SELECT stock FROM inventory WHERE label = 'spinBox_10';
+        """))
+        self.spinBox_11.valueChanged.connect(cursor.execute("""
+            SELECT stock FROM inventory WHERE label = 'spinBox_11';
+        """))
+        self.spinBox_12.valueChanged.connect(cursor.execute("""
+            SELECT stock FROM inventory WHERE label = 'spinBox_12';
+        """))
+        ##
         self.gridLayout_2.addWidget(self.label_pict9, 8, 2, 1, 1)
 
 
@@ -439,6 +480,31 @@ class LoginWindow(QWidget):
 
     def changeStyle(self):
         QApplication.setStyle(QStyleFactory.create('Fusion'))
+
+
+connection = sqlite3.connect("projects.db")
+cursor = connection.cursor()
+
+if not exists("projects.db"):
+    cursor.execute("""
+        CREATE TABLE inventory(label TEXT, stock INTEGER)
+        """)
+    cursor.execute("""INSERT INTO projects VALUES 
+        ('spinBox', 0),
+        ('spinBox_2', 0),
+        ('spinBox_3', 0),
+        ('spinBox_4', 0),
+        ('spinBox_5', 0),
+        ('spinBox_6', 0),
+        ('spinBox_7', 0),
+        ('spinBox_8', 0),
+        ('spinBox_9', 0),
+        ('spinBox_10', 0),
+        ('spinBox_11', 0),
+        ('spinBox_12', 0),
+        """)
+    connection.commit()
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
