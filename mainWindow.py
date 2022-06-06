@@ -13,11 +13,11 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from loginWindow import Ui_login
-from historyWindow import Ui_history
 from transactionWindow import Ui_transaction
 from inventoryWindow import Ui_inventory
 import sqlite3
 import sys
+import os
 
 if not exists("projects.db"):
     connection = sqlite3.connect("projects.db")
@@ -71,6 +71,8 @@ class Ui_MainWindow(object):
         self.pushButton = QPushButton(self.widget)
         self.pushButton.setObjectName(u"pushButton")
         self.pushButton.setGeometry(QRect(180, 440, 75, 23))
+        self.pushButton.clicked.connect(self.onClicked_exportValue)
+        self.pushButton.clicked.connect(self.decrementStock)
         self.label = QLabel(self.widget)
         self.label.setObjectName(u"label")
         self.label.setGeometry(QRect(40, 340, 31, 16))
@@ -83,6 +85,7 @@ class Ui_MainWindow(object):
         self.total = QLabel(self.widget)
         self.total.setObjectName(u"total")
         self.total.setGeometry(QRect(40, 230, 231, 61))
+        self.total.setText('0')
         font = QFont()
         font.setPointSize(26)
         font.setBold(True)
@@ -407,14 +410,41 @@ class Ui_MainWindow(object):
         self.spinBox_10.valueChanged.connect(self.show_total)
         self.spinBox_11.valueChanged.connect(self.show_total)
         self.spinBox_12.valueChanged.connect(self.show_total)
+
+        self.pushButton.clicked.connect(self.updateQueryspin1)
+        self.pushButton.clicked.connect(self.updateQueryspin2)
+        self.pushButton.clicked.connect(self.updateQueryspin3)
+        self.pushButton.clicked.connect(self.updateQueryspin4)
+        self.pushButton.clicked.connect(self.updateQueryspin5)
+        self.pushButton.clicked.connect(self.updateQueryspin6)
+        self.pushButton.clicked.connect(self.updateQueryspin7)
+        self.pushButton.clicked.connect(self.updateQueryspin8)
+        self.pushButton.clicked.connect(self.updateQueryspin9)
+        self.pushButton.clicked.connect(self.updateQueryspin10)
+        self.pushButton.clicked.connect(self.updateQueryspin11)
+        self.pushButton.clicked.connect(self.updateQueryspin12)
+        '''
+        self.spinBox.valueChanged.connect(self.updateQueryspin1)
+        self.spinBox_2.valueChanged.connect(self.updateQueryspin2)
+        self.spinBox_3.valueChanged.connect(self.updateQueryspin3)
+        self.spinBox_4.valueChanged.connect(self.updateQueryspin4)
+        self.spinBox_5.valueChanged.connect(self.updateQueryspin5)
+        self.spinBox_6.valueChanged.connect(self.updateQueryspin6)
+        self.spinBox_7.valueChanged.connect(self.updateQueryspin7)
+        self.spinBox_8.valueChanged.connect(self.updateQueryspin8)
+        self.spinBox_9.valueChanged.connect(self.updateQueryspin9)
+        self.spinBox_10.valueChanged.connect(self.updateQueryspin10)
+        self.spinBox_11.valueChanged.connect(self.updateQueryspin11)
+        self.spinBox_12.valueChanged.connect(self.updateQueryspin12)
+        '''
     # setupUi
 
     def show_total(self):
+        
+        self.valueT = (self.spinBox.value()*8000) + (self.spinBox_2.value()*20000) + (self.spinBox_3.value()*19000) + (self.spinBox_4.value()*15000) + (self.spinBox_5.value()*17000) + (self.spinBox_6.value()*20000) + (self.spinBox_7.value()*23000) + (self.spinBox_8.value()*12000) + (self.spinBox_9.value()*14000) + (self.spinBox_10.value()*13000) + (self.spinBox_11.value()*15000) + (self.spinBox_12.value()*20000)
 
-        value = (self.spinBox.value()*8000) + (self.spinBox_2.value()*20000) + (self.spinBox_3.value()*19000) + (self.spinBox_4.value()*15000) + (self.spinBox_5.value()*17000) + (self.spinBox_6.value()*20000) + (self.spinBox_7.value()*23000) + (self.spinBox_8.value()*12000) + (self.spinBox_9.value()*14000) + (self.spinBox_10.value()*13000) + (self.spinBox_11.value()*15000) + (self.spinBox_12.value()*20000)
-  
         # setting value of spin box to the label
-        self.total.setText(str(value))
+        self.total.setText(str(self.valueT))
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
@@ -451,8 +481,7 @@ class Ui_MainWindow(object):
     # retranslateUi
     
     def openHistory(self):
-        self.w = HistoryWindow()
-        self.w.show()
+        os.system("python historyWindow.py")
     
     def openInventory(self):
         self.w = InventoryWindow()
@@ -461,6 +490,86 @@ class Ui_MainWindow(object):
     def openTransaction(self):
         self.w = TransactionWindow()
         self.w.show()
+
+    def onClicked_exportValue(self):
+        v = self.valueT
+        
+        cursor.execute("""UPDATE temp SET temp = ?""", [str(v)])
+        connection.commit()
+
+    def decrementStock(self):
+        self.spinBox.setMaximum(self.value_spinBox - self.spinBox.value())
+        self.spinBox_2.setMaximum(self.value_spinBox2 - self.spinBox_2.value())
+        self.spinBox_3.setMaximum(self.value_spinBox3 - self.spinBox_3.value())
+        self.spinBox_4.setMaximum(self.value_spinBox4 - self.spinBox_4.value())
+        self.spinBox_5.setMaximum(self.value_spinBox5 - self.spinBox_5.value())
+        self.spinBox_6.setMaximum(self.value_spinBox6 - self.spinBox_6.value())
+        self.spinBox_7.setMaximum(self.value_spinBox7 - self.spinBox_7.value())
+        self.spinBox_8.setMaximum(self.value_spinBox8 - self.spinBox_8.value())
+        self.spinBox_9.setMaximum(self.value_spinBox9 - self.spinBox_9.value())
+        self.spinBox_10.setMaximum(self.value_spinBox10 - self.spinBox_10.value())
+        self.spinBox_11.setMaximum(self.value_spinBox11 - self.spinBox_11.value())
+        self.spinBox_12.setMaximum(self.value_spinBox12 - self.spinBox_12.value())
+
+    def updateQueryspin1(self, value):
+        value = self.value_spinBox - self.spinBox.value()
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=1""", (str(value)))
+        connection.commit()
+    
+    def updateQueryspin2(self, value):
+        value = self.value_spinBox2 - self.spinBox_2.value()
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=2""", [str(value)])
+        connection.commit()
+    
+    def updateQueryspin3(self, value):
+        value = self.value_spinBox3 - self.spinBox_3.value()
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=3""", [str(value)])
+        connection.commit()
+
+    def updateQueryspin4(self, value):
+        value = self.value_spinBox4 - self.spinBox_4.value()
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=4""", (str(value)))
+        connection.commit()
+
+    def updateQueryspin5(self, value):
+        value = self.value_spinBox5 - self.spinBox_5.value()
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=5""", (str(value)))
+        connection.commit()
+
+    def updateQueryspin6(self, value):
+        value = self.value_spinBox6 - self.spinBox_6.value()
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=6""", (str(value)))
+        connection.commit()
+
+    def updateQueryspin7(self, value):
+        value = self.value_spinBox7 - self.spinBox_7.value()
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=7""", (str(value)))
+        connection.commit()
+
+    def updateQueryspin8(self, value):
+        value = self.value_spinBox8 - self.spinBox_8.value()
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=8""", (str(value)))
+        connection.commit()
+
+    def updateQueryspin9(self, value):
+        value = self.value_spinBox9 - self.spinBox_9.value()
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=9""", (str(value)))
+        connection.commit()
+
+    def updateQueryspin10(self, value):
+        value = self.value_spinBox10 - self.spinBox_10.value()
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=10""", (str(value)))
+        connection.commit()
+
+    def updateQueryspin11(self, value):
+        value = self.value_spinBox11 - self.spinBox_11.value()
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=11""", (str(value)))
+        connection.commit()
+
+    def updateQueryspin12(self, value):
+        value = self.value_spinBox12 - self.spinBox_12.value()
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=12""", (str(value)))
+        connection.commit()
 
 class MainWindow(QMainWindow):
     def __init__(self, parent=None):
@@ -471,18 +580,6 @@ class MainWindow(QMainWindow):
         self.changeStyle()
         self.show()
 
-    def changeStyle(self):
-        QApplication.setStyle(QStyleFactory.create('Fusion'))
-
-class HistoryWindow(QWidget):
-    def __init__(self, parent=MainWindow):
-        QWidget.__init__(self)
-        self.ui = Ui_history()
-        self.ui.setupUi(self)
-
-        self.changeStyle()
-        self.show()
-    
     def changeStyle(self):
         QApplication.setStyle(QStyleFactory.create('Fusion'))
 
