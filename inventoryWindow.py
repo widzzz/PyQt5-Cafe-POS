@@ -12,6 +12,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 import sqlite3
+import sys
 
 connection = sqlite3.connect("projects.db")
 cursor = connection.cursor()
@@ -252,9 +253,6 @@ class Ui_inventory(object):
         self.label_2.setGeometry(QRect(20, 270, 111, 91))
         self.label_2.setTextFormat(Qt.AutoText)
         self.label_2.setWordWrap(True)
-        self.pushButton = QPushButton(Form)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setGeometry(QRect(30, 400, 131, 23))
 
         ##
         sqlite_select_query_stock = """SELECT stock FROM inventory"""
@@ -335,41 +333,52 @@ class Ui_inventory(object):
     # setupUi
 
     def updateQueryspin1(self, value):
-        self.cursor.execute("""UPDATE inventory SET stock = ? WHERE name=1""", (str(value)))
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=1""", [str(value)])
+        connection.commit()
     
     def updateQueryspin2(self, value):
-        self.cursor.execute("""UPDATE inventory SET stock = ? WHERE name=2""", [str(value)])
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=2""", [str(value)])
+        connection.commit()
     
     def updateQueryspin3(self, value):
-        self.cursor.execute("""UPDATE inventory SET stock = ? WHERE name=3""", [str(value)])
-    
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=3""", [str(value)])
+        connection.commit()
+
     def updateQueryspin4(self, value):
-        self.cursor.execute("""UPDATE inventory SET stock = ? WHERE name=4""", (str(value)))
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=4""", [str(value)])
+        connection.commit()
 
     def updateQueryspin5(self, value):
-        self.cursor.execute("""UPDATE inventory SET stock = ? WHERE name=5""", (str(value)))
-    
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=5""", [str(value)])
+        connection.commit()
+
     def updateQueryspin6(self, value):
-        self.cursor.execute("""UPDATE inventory SET stock = ? WHERE name=6""", (str(value)))
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=6""", [str(value)])
+        connection.commit()
 
     def updateQueryspin7(self, value):
-        self.cursor.execute("""UPDATE inventory SET stock = ? WHERE name=7""", (str(value)))
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=7""", [str(value)])
+        connection.commit()
 
     def updateQueryspin8(self, value):
-        self.cursor.execute("""UPDATE inventory SET stock = ? WHERE name=8""", (str(value)))
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=8""", [str(value)])
+        connection.commit()
 
     def updateQueryspin9(self, value):
-        self.cursor.execute("""UPDATE inventory SET stock = ? WHERE name=9""", (str(value)))
-    
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=9""", [str(value)])
+        connection.commit()
+
     def updateQueryspin10(self, value):
-        self.cursor.execute("""UPDATE inventory SET stock = ? WHERE name=10""", (str(value)))
-    
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=10""", [str(value)])
+        connection.commit()
+
     def updateQueryspin11(self, value):
-        self.cursor.execute("""UPDATE inventory SET stock = ? WHERE name=11""", (str(value)))
-    
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=11""", [str(value)])
+        connection.commit()
+
     def updateQueryspin12(self, value):
-        self.cursor.execute("""UPDATE inventory SET stock = ? WHERE name=12""", (str(value)))
-  
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=12""", [str(value)])
+        connection.commit()
 
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
@@ -399,6 +408,16 @@ class Ui_inventory(object):
         self.label_pict1.setText("")
         self.label.setText(QCoreApplication.translate("Form", u"<html><head/><body><p><span style=\" font-size:18pt; font-weight:600;\">Inventori</span></p></body></html>", None))
         self.label_2.setText(QCoreApplication.translate("Form", u"<html><head/><body><p>Anda diharuskan<span style=\" font-weight:600;\"> keluar</span> dari aplikasi untuk menyimpan stok barang</p></body></html>", None))
-        self.pushButton.setText(QCoreApplication.translate("Form", u"Simpan && Keluar", None))
     # retranslateUi
 
+class InventoryWindow(QWidget):
+    def __init__(self, parent=None):
+        QWidget.__init__(self)
+        self.ui = Ui_inventory()
+        self.ui.setupUi(self)
+
+        self.changeStyle()
+        self.show()
+
+    def changeStyle(self):
+        QApplication.setStyle(QStyleFactory.create('Fusion'))
