@@ -11,6 +11,8 @@
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
+from PyQt5.QtSql import *
+import datetime
 import sqlite3
 import sys
 
@@ -59,6 +61,9 @@ class Ui_transaction(object):
         font1 = QFont()
         font1.setPointSize(14)
         self.pushButton.setFont(font1)
+        #
+        self.pushButton.clicked.connect(self.onClicked_pushButton)
+        #
         self.totalLineEdit = QLineEdit(Dialog)
         self.totalLineEdit.setObjectName(u"totalLineEdit")
         self.totalLineEdit.setGeometry(QRect(230, 210, 281, 20))
@@ -67,6 +72,9 @@ class Ui_transaction(object):
         self.label_4 = QLabel(Dialog)
         self.label_4.setObjectName(u"label_4")
         self.label_4.setGeometry(QRect(70, 210, 161, 16))
+
+        #
+        #
 
         self.retranslateUi(Dialog)
 
@@ -83,11 +91,12 @@ class Ui_transaction(object):
     def onClicked_pushButton(self):
         total = self.totalLineEdit.text()
         method = self.comboBox_1.currentText()
-        datetime = datetime.now()
+        timedate = datetime.datetime.now()
 
-        cursor.execute("""INSERT INTO SET stock = ? WHERE name=4""", (str(value)))
-        cursor.execute("""UPDATE history SET stock = ? WHERE name=4""", (str(value)))
-        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=4""", (str(value)))
+        cursor.execute("""INSERT INTO history (datetime,transactionValue,method)
+                        VALUES(?,?,?);
+                        """, [str(timedate),str(total),str(method)])
+        connection.commit()
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
