@@ -8,6 +8,7 @@
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
+from asyncio.windows_events import NULL
 from genericpath import exists
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -19,33 +20,8 @@ import sqlite3
 import sys
 import os
 
-if not exists("projects.db"):
-    connection = sqlite3.connect("projects.db")
-    cursor = connection.cursor()
-    cursor.execute("""
-        CREATE TABLE inventory(
-        name INT,
-        stock INT);
-        """)
-    cursor.execute("""INSERT INTO inventory (name, stock) VALUES 
-        (1,0),
-        (2,0),
-        (3,0),
-        (4,0),
-        (5,0),
-        (6,0),
-        (7,0),
-        (8,0),
-        (9,0),
-        (10,0),
-        (11,0),
-        (12,0);
-        """)
-    connection.commit()
-else:
-    connection = sqlite3.connect("projects.db")
-    cursor = connection.cursor()
-
+connection = sqlite3.connect("projects.db")
+cursor = connection.cursor()
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -71,6 +47,15 @@ class Ui_MainWindow(object):
         self.pushButton = QPushButton(self.widget)
         self.pushButton.setObjectName(u"pushButton")
         self.pushButton.setGeometry(QRect(180, 440, 75, 23))
+
+        ##
+        self.pushButton_4 = QPushButton(self.widget)
+        self.pushButton_4.setText("Update DB")
+
+        self.pushButton_4.setGeometry(QRect(180, 520, 75, 23))
+        self.pushButton_4.clicked.connect(self.updateMaximumDB)
+        ##
+
         self.pushButton.clicked.connect(self.onClicked_exportValue)
         self.pushButton.clicked.connect(self.decrementStock)
         self.label = QLabel(self.widget)
@@ -398,6 +383,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         QMetaObject.connectSlotsByName(MainWindow)
+        self.show_total()
         self.spinBox.valueChanged.connect(self.show_total)
         self.spinBox_2.valueChanged.connect(self.show_total)
         self.spinBox_3.valueChanged.connect(self.show_total)
@@ -447,7 +433,7 @@ class Ui_MainWindow(object):
         self.total.setText(str(self.valueT))
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("Menu Utama - Cafe-POS", u"Menu Utama - Cafe-Pos", None))
         self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"Inventori", None))
         self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"Riwayat", None))
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Proses", None))
@@ -492,6 +478,9 @@ class Ui_MainWindow(object):
 
     def onClicked_exportValue(self):
         v = self.valueT
+        
+        if self.valueT == NULL:
+            self.valueT == 0
         
         cursor.execute("""UPDATE temp SET temp = ?""", [str(v)])
         connection.commit()
@@ -569,6 +558,61 @@ class Ui_MainWindow(object):
         value = self.value_spinBox12 - self.spinBox_12.value()
         cursor.execute("""UPDATE inventory SET stock = ? WHERE name=12""", [str(value)])
         connection.commit()
+
+    def updateMaximumDB(self):
+        sqlite_select_query_stock = """SELECT stock FROM inventory"""
+        cursor.execute(sqlite_select_query_stock)
+
+        ## F*CK LOOPING
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox = int(t)
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox2 = int(t)
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox3 = int(t)
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox4 = int(t)
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox5 = int(t)
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox6 = int(t)
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox7 = int(t)
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox8 = int(t)
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox9 = int(t)
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox10 = int(t)
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox11 = int(t)
+        t = cursor.fetchone()
+        t = sum(t)
+        self.value_spinBox12 = int(t)
+
+        self.spinBox.setMaximum(self.value_spinBox)
+        self.spinBox_2.setMaximum(self.value_spinBox2)
+        self.spinBox_3.setMaximum(self.value_spinBox3)
+        self.spinBox_4.setMaximum(self.value_spinBox4)
+        self.spinBox_5.setMaximum(self.value_spinBox5)
+        self.spinBox_6.setMaximum(self.value_spinBox6)
+        self.spinBox_7.setMaximum(self.value_spinBox7)
+        self.spinBox_8.setMaximum(self.value_spinBox8)
+        self.spinBox_9.setMaximum(self.value_spinBox9)
+        self.spinBox_10.setMaximum(self.value_spinBox10)
+        self.spinBox_11.setMaximum(self.value_spinBox11)
+        self.spinBox_12.setMaximum(self.value_spinBox12)
 
 class MainWindow(QMainWindow):
     def __init__(self, parent=None):
