@@ -12,7 +12,8 @@
 
 ### Easy step
 
-* Download this repo
+* Download manually this repo
+* Extract it
 * Open the folder with VSCode
 * Run the **initDB.py** then **loginWindow.py**
 
