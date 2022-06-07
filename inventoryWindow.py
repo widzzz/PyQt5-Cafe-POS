@@ -8,14 +8,16 @@
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
+from genericpath import exists
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 import sqlite3
 import sys
 
-connection = sqlite3.connect("projects.db")
-cursor = connection.cursor()
+if exists("projects.db"):
+    connection = sqlite3.connect("projects.db")
+    cursor = connection.cursor()
 
 class Ui_inventory(object):
     def setupUi(self, Form):
@@ -381,7 +383,7 @@ class Ui_inventory(object):
         connection.commit()
 
     def retranslateUi(self, Form):
-        Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
+        Form.setWindowTitle(QCoreApplication.translate("Edit Stok", u"Edit Stok", None))
         self.label_text7.setText(QCoreApplication.translate("Form", u"<html><head/><body><p align=\"center\">Rice Bowl</p><p align=\"center\">23.000</p></body></html>", None))
         self.label_pict8.setText("")
         self.label_pict3.setText("")
@@ -407,7 +409,7 @@ class Ui_inventory(object):
         self.label_text1.setText(QCoreApplication.translate("Form", u"<html><head/><body><p>Air Mineral</p><p>8.000</p></body></html>", None))
         self.label_pict1.setText("")
         self.label.setText(QCoreApplication.translate("Form", u"<html><head/><body><p><span style=\" font-size:18pt; font-weight:600;\">Inventori</span></p></body></html>", None))
-        self.label_2.setText(QCoreApplication.translate("Form", u"<html><head/><body><p>Anda diharuskan<span style=\" font-weight:600;\"> keluar</span> dari aplikasi untuk menyimpan stok barang</p></body></html>", None))
+        self.label_2.setText(QCoreApplication.translate("Form", u"<html><head/><body><p>Setelah mengedit inventori, pastikan <span style=\" font-weight:600;\">Update DB</span> di menu utama</p></body></html>", None))
     # retranslateUi
 
 class InventoryWindow(QWidget):
