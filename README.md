@@ -9,7 +9,7 @@
 Download manually or Git Clone this repo
 
 ```shell
-https://github.com/widzzz/widzzz.git
+git clone https://blablabla
 ```
 
 Change directory
