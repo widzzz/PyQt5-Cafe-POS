@@ -28,7 +28,7 @@ python -m venv c:\path\to\myenv
 Install pip package (required)
 
 ```shell
-pip install pyqt5 pyqt5-tools sqlite3
+pip install pyqt5 pyqt5-tools
 ```
 
 Database initialization
