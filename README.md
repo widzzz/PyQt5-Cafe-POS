@@ -1,10 +1,22 @@
 # Cafe-POS
 
+**DISCLAIMER!** The code is a bit mess, but it should works perfectly.
+
+![Screenshot of the app](src/../preview.png)
+
 ## Requirements
 
-* Python >=3.6
+* Python >=3.6 (Tested on Python 3.9)
 
 ## How to run ?
+
+### Easy step
+
+* Download this repo
+* Open the folder with VSCode
+* Run the **initDB.py** then **loginWindow.py**
+
+### Conventional step
 
 Download manually or Git Clone this repo
 
