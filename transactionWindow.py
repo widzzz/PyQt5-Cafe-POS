@@ -8,6 +8,7 @@
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
+from genericpath import exists
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
@@ -15,8 +16,9 @@ import sqlite3
 import datetime
 import sys
 
-connection = sqlite3.connect("projects.db")
-cursor = connection.cursor()
+if exists("projects.db"):
+    connection = sqlite3.connect("projects.db")
+    cursor = connection.cursor()
 
 class Ui_transaction(object):
     def setupUi(self, Dialog):
