@@ -2,7 +2,7 @@
 
 **DISCLAIMER!** The code is a bit mess, but it should works perfectly.
 
-![Screenshot of the app](src/../preview.png)
+<p align="center"><img src="preview.png" alt="drawing" width="200" align=center/></p>
 
 ## Requirements
 
