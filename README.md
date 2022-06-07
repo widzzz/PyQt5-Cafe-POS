@@ -18,7 +18,7 @@
 
 ### Conventional step
 
-Download manually or Git Clone this repo
+Download manually or git clone this repo
 
 ```shell
 git clone https://blablabla
