@@ -18,16 +18,17 @@ Change directory
 cd <yourpath>
 ```
 
-(Optional) Setting your virtual environments in Windows
+(Optional) Setting your virtual environments in Windows with Powershell
 
-```shell
+```powershell
 python -m venv c:\path\to\myenv
+.\Scripts\Activate.ps1
 ```
 
 Install pip package (required)
 
 ```shell
-pip install pyqt5 ppyqt5-tools sqlite3
+pip install pyqt5 pyqt5-tools sqlite3
 ```
 
 Database initialization
