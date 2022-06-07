@@ -13,7 +13,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 from loginWindow import Ui_login
-from transactionWindow import Ui_transaction
+# from transactionWindow import Ui_transaction
 from inventoryWindow import Ui_inventory
 import sqlite3
 import sys
@@ -488,8 +488,7 @@ class Ui_MainWindow(object):
         self.w.show()
 
     def openTransaction(self):
-        self.w = TransactionWindow()
-        self.w.show()
+        os.system('python transactionWindow.py')
 
     def onClicked_exportValue(self):
         v = self.valueT
@@ -513,7 +512,7 @@ class Ui_MainWindow(object):
 
     def updateQueryspin1(self, value):
         value = self.value_spinBox - self.spinBox.value()
-        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=1""", (str(value)))
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=1""", [str(value)])
         connection.commit()
     
     def updateQueryspin2(self, value):
@@ -528,47 +527,47 @@ class Ui_MainWindow(object):
 
     def updateQueryspin4(self, value):
         value = self.value_spinBox4 - self.spinBox_4.value()
-        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=4""", (str(value)))
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=4""", [str(value)])
         connection.commit()
 
     def updateQueryspin5(self, value):
         value = self.value_spinBox5 - self.spinBox_5.value()
-        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=5""", (str(value)))
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=5""", [str(value)])
         connection.commit()
 
     def updateQueryspin6(self, value):
         value = self.value_spinBox6 - self.spinBox_6.value()
-        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=6""", (str(value)))
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=6""", [str(value)])
         connection.commit()
 
     def updateQueryspin7(self, value):
         value = self.value_spinBox7 - self.spinBox_7.value()
-        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=7""", (str(value)))
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=7""", [str(value)])
         connection.commit()
 
     def updateQueryspin8(self, value):
         value = self.value_spinBox8 - self.spinBox_8.value()
-        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=8""", (str(value)))
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=8""", [str(value)])
         connection.commit()
 
     def updateQueryspin9(self, value):
         value = self.value_spinBox9 - self.spinBox_9.value()
-        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=9""", (str(value)))
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=9""", [str(value)])
         connection.commit()
 
     def updateQueryspin10(self, value):
         value = self.value_spinBox10 - self.spinBox_10.value()
-        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=10""", (str(value)))
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=10""", [str(value)])
         connection.commit()
 
     def updateQueryspin11(self, value):
         value = self.value_spinBox11 - self.spinBox_11.value()
-        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=11""", (str(value)))
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=11""", [str(value)])
         connection.commit()
 
     def updateQueryspin12(self, value):
         value = self.value_spinBox12 - self.spinBox_12.value()
-        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=12""", (str(value)))
+        cursor.execute("""UPDATE inventory SET stock = ? WHERE name=12""", [str(value)])
         connection.commit()
 
 class MainWindow(QMainWindow):
@@ -595,6 +594,7 @@ class InventoryWindow(QWidget):
     def changeStyle(self):
         QApplication.setStyle(QStyleFactory.create('Fusion'))
 
+'''
 class TransactionWindow(QWidget):
     def __init__(self, parent=None):
         QWidget.__init__(self)
@@ -606,6 +606,7 @@ class TransactionWindow(QWidget):
 
     def changeStyle(self):
         QApplication.setStyle(QStyleFactory.create('Fusion'))
+'''
 
 class LoginWindow(QWidget):
     def __init__(self, parent=None):
