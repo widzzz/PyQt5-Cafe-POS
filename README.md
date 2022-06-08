@@ -4,9 +4,9 @@ A Simple Cafe Point-of-Sales app with simple database feature. Build with Python
 
 **Note!** If you want, latest version of PyQt and alternative PySide binding should be work, but not tested.
 
-The code is a bit mess, but it should works perfectly.
+The code is a bit mess, but it should works fine.
 
-<img src="preview.png" alt="drawing" width="200"/>
+<img src="preview.png" alt="drawing" width="300"/>
 
 ## Requirements
 
